@@ -7,7 +7,7 @@ import 'package:pawan_s_application2/core/app_export.dart';
 import 'package:pawan_s_application2/presentation/code_screen/code_screen.dart';
 import 'package:pawan_s_application2/widgets/custom_elevated_button.dart';
 import 'package:pawan_s_application2/widgets/custom_phone_number.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 
 // ignore_for_file: must_be_immutable
 class NumberScreen extends StatefulWidget {
@@ -82,57 +82,57 @@ class _NumberScreenState extends State<NumberScreen> {
   }
 
   /// Navigates to the codeScreen when the action is triggered.
-  void onTapContinue(BuildContext context) async {
-    String phoneNumber =
-        '+${selectedCountry.phoneCode}${phoneNumberController.text}';
-    try {
-      await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
-        timeout: Duration(seconds: 42),
-        verificationCompleted: (PhoneAuthCredential credential) {
-          // This callback will be invoked if the auto-retrieval is successful.
-          // You can sign in the user here.
-          print('Verification completed. Signing in...');
-          signInWithCredential(credential);
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          // This callback will be invoked if verification fails.
-          // Handle the error here.
-          print('Verification failed: ${e.message}');
-        },
-        codeSent: (String verificationId, int? resendToken) {
-          // This callback will be invoked after code is sent successfully.
-          // Navigate to the code verification screen passing verificationId.
-          print('Code sent. Navigating to CodeScreen...');
-          Navigator.pushNamed(
-            context,
-            AppRoutes.codeScreen,
-            arguments: {
-              'verificationId': verificationId,
-              'phoneNumber': phoneNumber,
-            },
-          );
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          // This callback will be invoked when auto-retrieval times out.
-          // You can handle the timeout here.
-          print('Auto-retrieval timeout.');
-        },
-      );
-    } catch (e) {
-      // Handle any exceptions that may occur during verification.
-      print('Error verifying phone number: $e');
-    }
-  }
+  // void onTapContinue(BuildContext context) async {
+  //   String phoneNumber =
+  //       '+${selectedCountry.phoneCode}${phoneNumberController.text}';
+  //   try {
+  //     await FirebaseAuth.instance.verifyPhoneNumber(
+  //       phoneNumber: phoneNumber,
+  //       timeout: Duration(seconds: 42),
+  //       verificationCompleted: (PhoneAuthCredential credential) {
+  //         // This callback will be invoked if the auto-retrieval is successful.
+  //         // You can sign in the user here.
+  //         print('Verification completed. Signing in...');
+  //         signInWithCredential(credential);
+  //       },
+  //       verificationFailed: (FirebaseAuthException e) {
+  //         // This callback will be invoked if verification fails.
+  //         // Handle the error here.
+  //         print('Verification failed: ${e.message}');
+  //       },
+  //       codeSent: (String verificationId, int? resendToken) {
+  //         // This callback will be invoked after code is sent successfully.
+  //         // Navigate to the code verification screen passing verificationId.
+  //         print('Code sent. Navigating to CodeScreen...');
+  //         Navigator.pushNamed(
+  //           context,
+  //           AppRoutes.codeScreen,
+  //           arguments: {
+  //             'verificationId': verificationId,
+  //             'phoneNumber': phoneNumber,
+  //           },
+  //         );
+  //       },
+  //       codeAutoRetrievalTimeout: (String verificationId) {
+  //         // This callback will be invoked when auto-retrieval times out.
+  //         // You can handle the timeout here.
+  //         print('Auto-retrieval timeout.');
+  //       },
+  //     );
+  //   } catch (e) {
+  //     // Handle any exceptions that may occur during verification.
+  //     print('Error verifying phone number: $e');
+  //   }
+  // }
 
-  void signInWithCredential(PhoneAuthCredential credential) async {
-    try {
-      await FirebaseAuth.instance.signInWithCredential(credential);
-      print('User signed in successfully!');
-      // Navigate to the next screen after successful sign-in
-    } catch (e) {
-      // Handle sign-in errors
-      print('Error signing in: $e');
-    }
-  }
+  // void signInWithCredential(PhoneAuthCredential credential) async {
+  //   try {
+  //     await FirebaseAuth.instance.signInWithCredential(credential);
+  //     print('User signed in successfully!');
+  //     // Navigate to the next screen after successful sign-in
+  //   } catch (e) {
+  //     // Handle sign-in errors
+  //     print('Error signing in: $e');
+  //   }
+  // }
 }

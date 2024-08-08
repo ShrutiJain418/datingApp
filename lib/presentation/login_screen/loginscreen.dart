@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pawan_s_application2/presentation/i_am_screen/i_am_screen.dart';
 import 'package:pawan_s_application2/presentation/reset_password/reset.dart';
@@ -160,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           // Perform login logic
-                          login();
+                          //  login();
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -230,23 +230,23 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Future login() async {
-    try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-        email: phoneController.text.trim(),
-        password: passwordController.text.trim(),
-      )
-          .then((value) async {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => IAmScreen()),
-        );
-      });
-    } on FirebaseAuthException catch (e) {
-      Utils.showSnackBar(e.message);
-    }
-  }
+  // Future login() async {
+  //   try {
+  //     await FirebaseAuth.instance
+  //         .signInWithEmailAndPassword(
+  //       email: phoneController.text.trim(),
+  //       password: passwordController.text.trim(),
+  //     )
+  //         .then((value) async {
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => IAmScreen()),
+  //       );
+  //     });
+  //   } on FirebaseAuthException catch (e) {
+  //     Utils.showSnackBar(e.message);
+  //   }
+  // }
 }
 
 class Utils {

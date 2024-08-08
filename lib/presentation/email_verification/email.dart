@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pawan_s_application2/presentation/login_screen/loginscreen.dart';
 
 class EmailVerificationPage extends StatefulWidget {
@@ -22,60 +22,60 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
   @override
   void initState() {
     super.initState();
-    isEmailVerified = FirebaseAuth.instance.currentUser?.emailVerified ?? false;
+    //  isEmailVerified = FirebaseAuth.instance.currentUser?.emailVerified ?? false;
 
-    if (!isEmailVerified) {
-      sendVerificationEmail();
+    //   if (!isEmailVerified) {
+    //     sendVerificationEmail();
 
-      timer = Timer.periodic(Duration(seconds: 10), (timer) {
-        checkEmailVerified();
-      });
-    }
-  }
+    //     timer = Timer.periodic(Duration(seconds: 10), (timer) {
+    //       checkEmailVerified();
+    //     });
+    //   }
+    // }
 
-  @override
-  void dispose() {
-    timer?.cancel();
-    super.dispose();
-  }
-
-  Future<void> checkEmailVerified() async {
-    await FirebaseAuth.instance.currentUser!.reload();
-
-    setState(() {
-      isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
-    });
-
-    if (isEmailVerified) {
+    @override
+    void dispose() {
       timer?.cancel();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
-      );
+      super.dispose();
     }
-  }
 
-  Future<void> sendVerificationEmail() async {
-    try {
-      final user = FirebaseAuth.instance.currentUser!;
-      await user.sendEmailVerification();
+    // Future<void> checkEmailVerified() async {
+    //   await FirebaseAuth.instance.currentUser!.reload();
 
-      setState(() {
-        canResendEmail = false;
-      });
+    //   setState(() {
+    //     isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    //   });
 
-      await Future.delayed(Duration(seconds: 10));
+    //   if (isEmailVerified) {
+    //     timer?.cancel();
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(builder: (context) => LoginScreen()),
+    //     );
+    //   }
+    // }
 
-      setState(() {
-        canResendEmail = true;
-      });
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(e.toString()),
-        ),
-      );
-    }
+    // Future<void> sendVerificationEmail() async {
+    //   try {
+    //     final user = FirebaseAuth.instance.currentUser!;
+    //     await user.sendEmailVerification();
+
+    //     setState(() {
+    //       canResendEmail = false;
+    //     });
+
+    //     await Future.delayed(Duration(seconds: 10));
+
+    //     setState(() {
+    //       canResendEmail = true;
+    //     });
+    //   } catch (e) {
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //       SnackBar(
+    //         content: Text(e.toString()),
+    //       ),
+    //     );
+    //   }
   }
 
   @override
@@ -117,7 +117,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
               SizedBox(height: 50.0),
               ElevatedButton(
                 onPressed: () {
-                  canResendEmail ? sendVerificationEmail() : null;
+                  // canResendEmail ? sendVerificationEmail() : null;
                 },
                 child: Text(
                   'Resend Email',
@@ -135,7 +135,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
               SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  FirebaseAuth.instance.signOut();
+                  // FirebaseAuth.instance.signOut();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

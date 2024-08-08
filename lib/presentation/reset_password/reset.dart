@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pawan_s_application2/presentation/login_screen/loginscreen.dart';
 
@@ -116,7 +116,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               ElevatedButton(
                 onPressed: () {
                   if (formkey.currentState!.validate()) {
-                    _resetPassword();
+                    //  _resetPassword();
                     // Navigator.push(
                     //   context,
                     //   MaterialPageRoute(builder: (context) => LoginPage()),
@@ -155,26 +155,26 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     );
   }
 
-  void _resetPassword() {
-    // Validate the form
-    if (formkey.currentState!.validate()) {
-      User? user = FirebaseAuth.instance.currentUser;
-      String newPassword = passwordController.text;
+  // void _resetPassword() {
+  //   // Validate the form
+  //   if (formkey.currentState!.validate()) {
+  //     User? user = FirebaseAuth.instance.currentUser;
+  //     String newPassword = passwordController.text;
 
-      user?.updatePassword(newPassword).then((_) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
-        );
-      }).catchError((error) {
-        print("Failed to update password: $error");
+  //     user?.updatePassword(newPassword).then((_) {
+  //       Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => LoginScreen()),
+  //       );
+  //     }).catchError((error) {
+  //       print("Failed to update password: $error");
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Failed to update password. Please try again."),
-          ),
-        );
-      });
-    }
-  }
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //           content: Text("Failed to update password. Please try again."),
+  //         ),
+  //       );
+  //     });
+  //   }
+  // }
 }

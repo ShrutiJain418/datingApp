@@ -23,60 +23,63 @@ class _OnboardingOneScreenState extends State<OnboardingOneScreen> {
         child: Scaffold(
             body: Container(
                 width: double.maxFinite,
-                child: Column(children: [
-                  _buildOnboardingSlider(context),
-                  Text(title[sliderIndex],
-                      style: CustomTextStyles.headlineSmallPrimary),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                    child: Text(
-                      label[sliderIndex],
-                      style: CustomTextStyles.bodyMediumb2000000,
-                      textAlign: TextAlign.center,
+                child: SingleChildScrollView(
+                  child: Column(children: [
+                    _buildOnboardingSlider(context),
+                    Text(title[sliderIndex],
+                        style: CustomTextStyles.headlineSmallPrimary),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                      child: Text(
+                        label[sliderIndex],
+                        style: CustomTextStyles.bodyMediumb2000000,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 27.v),
-                  SizedBox(
-                      height: 8.v,
-                      child: AnimatedSmoothIndicator(
-                          activeIndex: sliderIndex,
-                          count: 3,
-                          axisDirection: Axis.horizontal,
-                          effect: ScrollingDotsEffect(
-                              spacing: 8,
-                              activeDotColor: theme.colorScheme.primary,
-                              dotColor: appTheme.gray200,
-                              dotHeight: 8.v,
-                              dotWidth: 8.h))),
-                  SizedBox(height: 42.v),
-                  CustomElevatedButton(
-                      text: "Create an account",
-                      margin: EdgeInsets.symmetric(horizontal: 40.h),
-                      onPressed: () {
-                        onTapCreateAnAccount(context);
-                      }),
-                  SizedBox(height: 27.v),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    },
-                    child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                              text: "Already have an account?",
-                              style: CustomTextStyles.bodyMediumb2000000),
-                          TextSpan(text: " "),
-                          TextSpan(
-                              text: "Sign In",
-                              style: CustomTextStyles.titleSmallffe94057)
-                        ]),
-                        textAlign: TextAlign.left),
-                  ),
-                  SizedBox(height: 5.v)
-                ]))));
+                    SizedBox(height: 27.v),
+                    SizedBox(
+                        height: 8.v,
+                        child: AnimatedSmoothIndicator(
+                            activeIndex: sliderIndex,
+                            count: 3,
+                            axisDirection: Axis.horizontal,
+                            effect: ScrollingDotsEffect(
+                                spacing: 8,
+                                activeDotColor: theme.colorScheme.primary,
+                                dotColor: appTheme.gray200,
+                                dotHeight: 8.v,
+                                dotWidth: 8.h))),
+                    SizedBox(height: 42.v),
+                    CustomElevatedButton(
+                        text: "Create an account",
+                        margin: EdgeInsets.symmetric(horizontal: 40.h),
+                        onPressed: () {
+                          onTapCreateAnAccount(context);
+                        }),
+                    SizedBox(height: 27.v),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                        );
+                      },
+                      child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(
+                                text: "Already have an account?",
+                                style: CustomTextStyles.bodyMediumb2000000),
+                            TextSpan(text: " "),
+                            TextSpan(
+                                text: "Sign In",
+                                style: CustomTextStyles.titleSmallffe94057)
+                          ]),
+                          textAlign: TextAlign.left),
+                    ),
+                    SizedBox(height: 5.v)
+                  ]),
+                ))));
   }
 
   /// Section Widget

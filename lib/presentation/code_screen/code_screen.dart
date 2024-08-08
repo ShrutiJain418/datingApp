@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pawan_s_application2/core/app_export.dart';
@@ -199,20 +199,20 @@ class _CodeScreenState extends State<CodeScreen> {
     );
   }
 
-  void verifyCode(
-      String verificationId, String code, BuildContext context) async {
-    try {
-      PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: verificationId, smsCode: code);
-      await FirebaseAuth.instance.signInWithCredential(credential);
-      print('User signed in successfully!');
-      // Navigate to the next screen after successful sign-in
-      Navigator.pushNamed(context, AppRoutes.profileDetailsScreen);
-    } catch (e) {
-      // Handle sign-in errors
-      print('Error signing in: $e');
-    }
-  }
+  // void verifyCode(
+  //     String verificationId, String code, BuildContext context) async {
+  //   try {
+  //     PhoneAuthCredential credential = PhoneAuthProvider.credential(
+  //         verificationId: verificationId, smsCode: code);
+  //     await FirebaseAuth.instance.signInWithCredential(credential);
+  //     print('User signed in successfully!');
+  //     // Navigate to the next screen after successful sign-in
+  //     Navigator.pushNamed(context, AppRoutes.profileDetailsScreen);
+  //   } catch (e) {
+  //     // Handle sign-in errors
+  //     print('Error signing in: $e');
+  //   }
+  // }
 
   Widget _buildOtpButton(String digit) {
     return GestureDetector(
